@@ -5,6 +5,7 @@ function getRandomHexColor() {
 const startButton = document.querySelector('[data-start]');
 const stopButton = document.querySelector('[data-stop]');
 const body = document.querySelector('body');
+let startChangeBodyColor = null;
 
 startButton.addEventListener('click', onStartClick);
 function onStartClick(event) {
