@@ -26,16 +26,12 @@ const options = {
       window.alert('Please choose a date in the future');
     } else {
       refs.startBtn.removeAttribute('disabled');
-    }
-  },
-};
+    }},};
 
 flatpickr(refs.dateInput, options);
-
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
-
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
@@ -50,10 +46,10 @@ function convertMs(ms) {
 }
 
 function setTimerComponents({ days, hours, minutes, seconds }) {
-  refs.day.textContent = '${days}';
-  refs.hours.textContent = '${hours}';
-  refs.minutes.textContent = '${minutes}';
-  refs.seconds.textContent = '${seconds}';
+  refs.day.textContent = days;
+  refs.hours.textContent = hours;
+  refs.minutes.textContent = minutes;
+  refs.seconds.textContent = seconds;
 }
 
 const timer = {
@@ -66,10 +62,11 @@ const timer = {
       }
       this.isActive = true;
       const currentDate = new Date();
-      let datesDifference = selectedDate - currentDate;
-      const { days, hours, minutes, seconds} = convertMs(datesDifference);
-      setTimerComponents({ days, hours, minutes, seconds });
+     let datesDifference = selectedDate - currentDate;
+    //   const { days, hours, minutes, seconds} = convertMs(datesDifference);
+      setTimerComponents(convertMs(datesDifference));
     }, 1000);
+    
   },
 
   stop() {
