@@ -9,7 +9,6 @@ const refs = {
   minutes: document.querySelector('[data-minutes]'),
   seconds: document.querySelector('[data-seconds]'),
 };
-console.dir(refs.day);
 
 refs.startBtn.setAttribute('disabled', true);
 const currentDate = new Date();
@@ -62,7 +61,7 @@ const timer = {
   isActive: false,
   start() {
     this.intervalId = setInterval(() => {
-      if (isActive) {
+      if (this.isActive) {
         return;
       }
       this.isActive = true;
@@ -78,6 +77,6 @@ const timer = {
   },
 };
 
-startButton.addEventListener('click', () => {
+refs.startBtn.addEventListener('click', () => {
   timer.start();
 });
