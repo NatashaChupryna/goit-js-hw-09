@@ -2,7 +2,6 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
-
 const refs = {
   dateInput: document.querySelector('#datetime-picker'),
   startBtn: document.querySelector('[data-start]'),
@@ -50,7 +49,7 @@ function convertMs(ms) {
 }
 
 function setTimerComponents({ days, hours, minutes, seconds }) {
-  refs.day.textContent =addLeadingZero(days) ;
+  refs.day.textContent = addLeadingZero(days);
   refs.hours.textContent = addLeadingZero(hours);
   refs.minutes.textContent = addLeadingZero(minutes);
   refs.seconds.textContent = addLeadingZero(seconds);
@@ -67,6 +66,9 @@ const timer = {
       //   this.isActive = true;
       const currentDate = new Date();
       let datesDifference = selectedDate - currentDate;
+      if (datesDifference <= 0) {
+        clearInterval(setTimerId);
+      }
       //   const { days, hours, minutes, seconds} = convertMs(datesDifference);
       addLeadingZero(setTimerComponents(convertMs(datesDifference)));
     }, 1000);
