@@ -26,7 +26,9 @@ const options = {
       window.alert('Please choose a date in the future');
     } else {
       refs.startBtn.removeAttribute('disabled');
-    }},};
+    }
+  },
+};
 
 flatpickr(refs.dateInput, options);
 function addLeadingZero(value) {
@@ -46,27 +48,26 @@ function convertMs(ms) {
 }
 
 function setTimerComponents({ days, hours, minutes, seconds }) {
-  refs.day.textContent = days;
-  refs.hours.textContent = hours;
-  refs.minutes.textContent = minutes;
-  refs.seconds.textContent = seconds;
+  refs.day.textContent =addLeadingZero(days) ;
+  refs.hours.textContent = addLeadingZero(hours);
+  refs.minutes.textContent = addLeadingZero(minutes);
+  refs.seconds.textContent = addLeadingZero(seconds);
 }
 
 const timer = {
   intervalId: null,
-  isActive: false,
+  //   isActive: false,
   start() {
     this.intervalId = setInterval(() => {
-      if (this.isActive) {
-        return;
-      }
-      this.isActive = true;
+      //   if (this.isActive) {
+      //     return;
+      //   }
+      //   this.isActive = true;
       const currentDate = new Date();
-     let datesDifference = selectedDate - currentDate;
-    //   const { days, hours, minutes, seconds} = convertMs(datesDifference);
-      setTimerComponents(convertMs(datesDifference));
+      let datesDifference = selectedDate - currentDate;
+      //   const { days, hours, minutes, seconds} = convertMs(datesDifference);
+      addLeadingZero(setTimerComponents(convertMs(datesDifference)));
     }, 1000);
-    
   },
 
   stop() {
