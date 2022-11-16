@@ -20,5 +20,5 @@ stopButton.addEventListener('click', onStopClick);
 function onStopClick() {
   clearInterval(startChangeBodyColor);
   startButton.removeAttribute('disabled');
-  body.style.backgroundColor = '#fafafa';
+
 };
