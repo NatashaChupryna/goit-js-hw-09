@@ -1,9 +1,8 @@
 import Notiflix from 'notiflix';
 
-const form = document.querySelector('.form');
-const button = document.querySelector('button');
+const form = document.querySelector('form');
 
-button.addEventListener('submit', onFormSubmit);
+form.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
@@ -35,7 +34,7 @@ function createPromise(position, delay) {
   });
 }
 
-createPromise(5, 1000)
+
 
 function promiseResolve() {
   Notiflix.Notify.success(`✅Fulfilled promise in ${delay}ms`);
