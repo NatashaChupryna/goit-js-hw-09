@@ -13,7 +13,7 @@ function onFormSubmit(event) {
     step: Number(event.currentTarget.step.value),
     amount: Number(event.currentTarget.amount.value),
   };
-  for (let i = 0; i < userData.amount; i += 1) {
+  for (let i = 0; i <= userData.amount; i += 1) {
     userData.delay += userData.step;
     createPromise(i, userData.delay).then(promiseResolve).catch(promiseReject);
   }
@@ -44,3 +44,5 @@ function promiseResolve() {
 function promiseReject(error) {
   Notiflix.Notify.failure(`❌Rejected promise in ${delay}ms`);
 }
+
+
