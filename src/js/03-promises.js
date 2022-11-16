@@ -14,7 +14,7 @@ function onFormSubmit(event) {
     amount: Number(event.currentTarget.amount.value),
   };
   for (let i = 0; i < userData.amount; i += 1) {
-    delay += step;
+    userData.delay += userData.step;
     createPromise(i, userData.delay).then(promiseResolve).catch(promiseReject);
   }
 }
